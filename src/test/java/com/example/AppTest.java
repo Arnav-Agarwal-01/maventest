@@ -17,7 +17,7 @@ public class AppTest
      */
     public AppTest( String testName )
     {
-        super( testName );
+        super( testName ) ;
     }
 
     /**
@@ -25,13 +25,13 @@ public class AppTest
      */
     public static Test suite()
     {
-        return new TestSuite( AppTest.class );
+        return new TestSuite( AppTest.class  );
     }
 
     /**
      * Rigourous Test :-)
      */
-    public void testApp()
+    public void testApp() 
     {
         assertTrue( true );
     }
