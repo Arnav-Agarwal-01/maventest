@@ -451,5 +451,96 @@ Paste in browser → Your website appears 🎉
 ->Stopping 
 sudo docker ps -> gives container id 
 sudo docker stop <container id>
+
+
+
+# ===========================
+# GIT ESSENTIAL COMMANDS
+# ===========================
+
+# --- Setup ---
+git --version                                 # check git installed
+git config --global user.name "Your Name"     # set username
+git config --global user.email "you@mail.com" # set email
+git config --list                              # view configs
+
+# --- Create / Connect Repo ---
+git init                                      # initialize repo in folder
+git clone <url>                               # clone remote repo
+git remote -v                                 # show remotes
+git remote add origin <url>                   # add remote
+git remote remove origin                      # remove remote
+git remote rename origin upstream             # rename remote
+git remote set-url origin <new-url>           # change remote url
+git remote show origin                        # detailed remote info
+
+# --- Staging & Committing ---
+git status                                    # show changed files
+git add file.txt                              # stage single file
+git add .                                     # stage all changes
+git commit -m "message"                       # commit staged changes
+git restore file.txt                          # discard unstaged changes
+git reset file.txt                            # unstage file
+git commit --amend -m "New msg"               # edit last commit message
+git revert <commit>                           # undo commit safely
+
+# --- Branching ---
+git branch                                    # list local branches
+git branch -a                                 # list local + remote branches
+git branch new-branch                         # create branch
+git checkout new-branch                       # switch branch
+git checkout -b feature-x                     # create + switch branch
+git branch -d old-branch                      # delete merged branch
+git branch -D force-delete                    # force delete branch
+git branch -r                                 # list remote branches
+git remote prune origin                       # remove deleted remote refs
+
+# --- Merging / Rebasing ---
+git checkout main                             # switch to main
+git merge feature-x                           # merge branch into main
+git fetch origin                              # get latest from remote
+git rebase origin/main                        # rebase local branch
+
+# --- Pushing / Pulling ---
+git push origin main                          # push commits
+git pull origin main                          # pull + merge
+git fetch origin                              # fetch only, no merge
+git fetch origin branch                       # fetch specific branch
+git push --set-upstream origin feature-x      # link local branch to remote
+
+# --- History ---
+git log                                       # full log
+git log --oneline                             # short log
+git diff                                      # changes not staged
+git diff --staged                             # staged changes
+git show <commit>                             # show commit details
+git blame file.txt                            # who changed each line
+
+# --- Stash ---
+git stash                                     # save work temporarily
+git stash apply                               # restore stashed work
+
+# --- Recovery ---
+git reflog                                    # view all actions (lifesaver)
+git checkout -b recover-branch <commit>       # restore deleted branch
+
+# --- Delete multiple branches ---
+git branch -d br1 br2 br3                     # delete branches at once
+
+# --- .gitignore ---
+# Create .gitignore file:
+# node_modules/
+# *.log
+# *.bak
+# .env
+
+# --- Sensitive file removal from history ---
+git filter-branch --force --index-filter \
+"git rm --cached --ignore-unmatch secrets.txt" \
+--prune-empty --tag-name-filter cat -- --all
+
+# ===========================
+# END OF MASTER CHEATSHEET
+# ===========================
     */
 }
